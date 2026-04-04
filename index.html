@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Supaflash — Learn Anything. Just Ask.</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: #ffffff;
+            color: #1a1a1a;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* ── Accent ── */
+        :root {
+            --accent: #007AFF;
+            --accent-dark: #0099cc;
+            --text: #1a1a1a;
+            --muted: #606060;
+            --light: #a0a0a0;
+            --border: #ebebeb;
+            --surface: #f7f7f7;
+        }
+
+        /* ── Hero ── */
+        .hero {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 80px 24px 56px;
+            max-width: 480px;
+            width: 100%;
+        }
+
+        .app-icon {
+            width: 100px;
+            height: 100px;
+            border-radius: 22px;
+            margin-bottom: 20px;
+        }
+
+        .app-name {
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--text);
+            letter-spacing: -0.5px;
+            margin-bottom: 4px;
+        }
+
+        .app-name span {
+            color: var(--accent);
+        }
+
+        .tagline-main {
+            font-size: 18px;
+            font-weight: 500;
+            color: var(--text);
+            margin-bottom: 10px;
+        }
+
+        .tagline {
+            font-size: 15px;
+            color: var(--muted);
+            line-height: 1.6;
+            padding: 0 8px;
+            margin-bottom: 40px;
+        }
+
+        /* ── Download buttons ── */
+        .download-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            width: 100%;
+            max-width: 320px;
+        }
+
+        .download-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 14px 24px;
+            border-radius: 12px;
+            font-size: 15px;
+            font-weight: 500;
+            text-decoration: none;
+            transition: opacity 0.15s ease;
+        }
+
+        .download-btn:hover {
+            opacity: 0.85;
+        }
+
+        .btn-appstore {
+            background-color: #1a1a1a;
+            color: #ffffff;
+        }
+
+        .btn-playstore {
+            background-color: var(--surface);
+            color: var(--text);
+            border: 0.5px solid var(--border);
+        }
+
+        .btn-icon {
+            width: 20px;
+            height: 20px;
+            flex-shrink: 0;
+        }
+
+        /* ── Divider ── */
+        .divider {
+            width: 100%;
+            max-width: 480px;
+            height: 0.5px;
+            background-color: var(--border);
+        }
+
+        /* ── Features ── */
+        .features {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            padding: 40px 24px;
+            max-width: 480px;
+            width: 100%;
+        }
+
+        .feature-card {
+            background-color: var(--surface);
+            border: 0.5px solid var(--border);
+            border-radius: 16px;
+            padding: 20px;
+        }
+
+        .feature-label {
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 6px;
+        }
+
+        .feature-title {
+            font-size: 17px;
+            font-weight: 500;
+            color: var(--text);
+            margin-bottom: 6px;
+        }
+
+        .feature-body {
+            font-size: 14px;
+            color: var(--muted);
+            line-height: 1.5;
+        }
+
+        /* ── Tag pills ── */
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            padding: 0 24px 40px;
+            max-width: 480px;
+            width: 100%;
+            justify-content: center;
+        }
+
+        .tag {
+            font-size: 12px;
+            font-weight: 500;
+            padding: 5px 12px;
+            border-radius: 20px;
+        }
+
+        .tag-ai {
+            background-color: #E6F9FF;
+            color: #006685;
+        }
+
+        .tag-study {
+            background-color: #E8F5EE;
+            color: #0A5C48;
+        }
+
+        .tag-gamified {
+            background-color: #FFF0E6;
+            color: #8A3D00;
+        }
+
+        .tag-free {
+            background-color: #FFF8E6;
+            color: #7A4D00;
+        }
+
+        .tag-decks {
+            background-color: #E8F0FF;
+            color: #1A3FAA;
+        }
+
+        /* ── Footer ── */
+        footer {
+            margin-top: auto;
+            width: 100%;
+            border-top: 0.5px solid var(--border);
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 24px;
+        }
+
+        .footer-links a {
+            font-size: 13px;
+            color: var(--muted);
+            text-decoration: none;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+
+        .footer-copy {
+            font-size: 12px;
+            color: var(--light);
+        }
+
+        .footer-contact {
+            font-size: 13px;
+            color: var(--muted);
+        }
+
+        .footer-contact a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        .footer-contact a:hover {
+            text-decoration: underline;
+        }
+
+        /* ── Coming Soon ribbon ── */
+        .ribbon-wrap {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 320px;
+            height: 320px;
+            overflow: hidden;
+            pointer-events: none;
+            z-index: 100;
+        }
+
+        .ribbon {
+            position: absolute;
+            top: 72px;
+            right: -80px;
+            width: 360px;
+            background-color: var(--accent);
+            color: #ffffff;
+            text-align: center;
+            font-size: 22px;
+            font-weight: 700;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            padding: 16px 0;
+            transform: rotate(45deg);
+            box-shadow: 0 4px 16px rgba(0, 122, 255, 0.4);
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Uncomment when app is live
+    <div class="ribbon-wrap">
+        <div class="ribbon">Coming Soon</div>
+    </div>
+    -->
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="app-name">Supa<span>flash</span></div>
+        <p class="tagline-main">Learn anything. Just ask.</p>
+        <p class="tagline">Paste your notes, upload a document, or describe what you want to learn — Supaflash turns it
+            into a gamified flash card deck in seconds.</p>
+
+        <div class="download-buttons">
+            <a href="https://apps.apple.com/us/app/supaflash/id000000000" class="download-btn btn-appstore">
+                <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                        d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z" />
+                </svg>
+                Download on the App Store
+            </a>
+            <a href="https://play.google.com/store/apps/details?id=com.supaflash.app"
+                class="download-btn btn-playstore">
+                <svg class="btn-icon" viewBox="0 0 24 24" fill="none">
+                    <path d="M3.18 23.5c.3.17.64.22.98.14l12.08-6.97-2.84-2.84L3.18 23.5z" fill="#EA4335" />
+                    <path d="M21.54 10.27L18.9 8.74l-3.17 3.17 3.17 3.17 2.67-1.54c.76-.44.76-1.61-.03-2.27z"
+                        fill="#FBBC05" />
+                    <path d="M3.18.5C2.84.42 2.5.47 2.2.64L13.4 11.84l2.34-2.34L3.18.5z" fill="#4285F4" />
+                    <path
+                        d="M2.2.64C1.84.87 1.6 1.3 1.6 1.87v20.26c0 .57.24 1 .6 1.23l.08.05L13.4 12.27v-.27L2.28.59 2.2.64z"
+                        fill="#34A853" />
+                </svg>
+                Get it on Google Play
+            </a>
+        </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- Features -->
+    <section class="features">
+        <div class="feature-card">
+            <div class="feature-label">SupaAI</div>
+            <div class="feature-title">Your personal flash card generator</div>
+            <div class="feature-body">Describe what you want to learn, paste your notes, or upload a PDF or Word doc —
+                SupaAI builds a ready-to-study flash card deck in seconds.</div>
+        </div>
+        <div class="feature-card">
+            <div class="feature-label">Catalog</div>
+            <div class="feature-title">Hand-curated decks on everything</div>
+            <div class="feature-body">Browse hundreds of expertly crafted decks across languages, science, history,
+                math, anatomy, pop culture, and more. All free, forever.</div>
+        </div>
+        <div class="feature-card">
+            <div class="feature-label">Gamified</div>
+            <div class="feature-title">Study that actually feels like progress</div>
+            <div class="feature-body">Earn XP, build daily streaks, and climb mastery tiers from Bronze to Legend. Every
+                session moves you forward.</div>
+        </div>
+        <div class="feature-card">
+            <div class="feature-label">Mastery</div>
+            <div class="feature-title">Know exactly where you stand</div>
+            <div class="feature-body">Track your progress card by card. Supaflash surfaces what you need to drill and
+                celebrates what you've mastered.</div>
+        </div>
+    </section>
+
+    <!-- Tags -->
+    <div class="tags">
+        <span class="tag tag-ai">AI-Powered</span>
+        <span class="tag tag-study">Flash Cards</span>
+        <span class="tag tag-gamified">Gamified</span>
+        <span class="tag tag-free">Free Forever</span>
+        <span class="tag tag-decks">200+ Decks</span>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-links">
+            <a href="privacy-policy.html">Privacy Policy</a>
+            <a href="terms-of-service.html">Terms of Service</a>
+        </div>
+        <p class="footer-contact">Questions? <a href="mailto:joshua9park@gmail.com">joshua9park@gmail.com</a></p>
+        <p class="footer-copy">&copy; 2026 Supaflash. All rights reserved.</p>
+    </footer>
+
+</body>
+
+</html>
