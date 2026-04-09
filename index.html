@@ -1,380 +1,493 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Supaflash — Learn Anything. Just Ask.</title>
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Supaflash — Learn Anything. Just Ask.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            background-color: #ffffff;
-            color: #1a1a1a;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
+    :root {
+      --accent: #007AFF;
+      --accent-glow: rgba(0, 122, 255, 0.25);
+      --accent-subtle: rgba(0, 122, 255, 0.08);
+      --bg: #060810;
+      --surface: #0D1117;
+      --surface-2: #141922;
+      --border: rgba(255,255,255,0.07);
+      --border-accent: rgba(0, 122, 255, 0.2);
+      --text: #F0F4FF;
+      --muted: rgba(240,244,255,0.5);
+      --light: rgba(240,244,255,0.25);
+    }
 
-        /* ── Accent ── */
-        :root {
-            --accent: #007AFF;
-            --accent-dark: #0099cc;
-            --text: #1a1a1a;
-            --muted: #606060;
-            --light: #a0a0a0;
-            --border: #ebebeb;
-            --surface: #f7f7f7;
-        }
+    html { scroll-behavior: smooth; }
 
-        /* ── Hero ── */
-        .hero {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 80px 24px 56px;
-            max-width: 480px;
-            width: 100%;
-        }
+    body {
+      font-family: 'Sora', sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      overflow-x: hidden;
+    }
 
-        .app-icon {
-            width: 100px;
-            height: 100px;
-            border-radius: 22px;
-            margin-bottom: 20px;
-        }
+    /* ── Star field ── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        radial-gradient(1px 1px at 12% 18%, rgba(255,255,255,0.6) 0%, transparent 100%),
+        radial-gradient(1.5px 1.5px at 28% 72%, rgba(255,255,255,0.4) 0%, transparent 100%),
+        radial-gradient(1px 1px at 43% 35%, rgba(255,255,255,0.5) 0%, transparent 100%),
+        radial-gradient(1px 1px at 67% 12%, rgba(255,255,255,0.7) 0%, transparent 100%),
+        radial-gradient(1.5px 1.5px at 81% 58%, rgba(255,255,255,0.35) 0%, transparent 100%),
+        radial-gradient(1px 1px at 55% 88%, rgba(255,255,255,0.5) 0%, transparent 100%),
+        radial-gradient(1px 1px at 92% 32%, rgba(255,255,255,0.4) 0%, transparent 100%),
+        radial-gradient(2px 2px at 7% 91%, rgba(255,255,255,0.3) 0%, transparent 100%),
+        radial-gradient(1px 1px at 38% 54%, rgba(255,255,255,0.6) 0%, transparent 100%),
+        radial-gradient(1.5px 1.5px at 74% 79%, rgba(255,255,255,0.4) 0%, transparent 100%),
+        radial-gradient(1px 1px at 19% 43%, rgba(255,255,255,0.5) 0%, transparent 100%),
+        radial-gradient(1px 1px at 88% 67%, rgba(255,255,255,0.35) 0%, transparent 100%);
+      pointer-events: none;
+      z-index: 0;
+    }
 
-        .app-name {
-            font-size: 32px;
-            font-weight: 700;
-            color: var(--text);
-            letter-spacing: -0.5px;
-            margin-bottom: 4px;
-        }
+    /* ── Ambient glow ── */
+    body::after {
+      content: '';
+      position: fixed;
+      top: -200px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 800px;
+      height: 600px;
+      background: radial-gradient(ellipse, rgba(0,122,255,0.12) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
 
-        .app-name span {
-            color: var(--accent);
-        }
+    /* ── Ribbon ── */
+    .ribbon-wrap {
+      position: fixed;
+      top: 0; right: 0;
+      width: 260px; height: 260px;
+      overflow: hidden;
+      pointer-events: none;
+      z-index: 100;
+    }
+    .ribbon {
+      position: absolute;
+      top: 58px; right: -72px;
+      width: 300px;
+      background: linear-gradient(135deg, #007AFF, #00C6FF);
+      color: #fff;
+      text-align: center;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      padding: 10px 0;
+      transform: rotate(45deg);
+      box-shadow: 0 4px 20px rgba(0,122,255,0.4);
+    }
 
-        .tagline-main {
-            font-size: 18px;
-            font-weight: 500;
-            color: var(--text);
-            margin-bottom: 10px;
-        }
+    /* ── Page wrapper ── */
+    .page {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      max-width: 520px;
+      padding: 0 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
 
-        .tagline {
-            font-size: 15px;
-            color: var(--muted);
-            line-height: 1.6;
-            padding: 0 8px;
-            margin-bottom: 40px;
-        }
+    /* ── Hero ── */
+    .hero {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 80px 0 56px;
+      animation: fadeUp 0.8s ease both;
+    }
 
-        /* ── Download buttons ── */
-        .download-buttons {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            width: 100%;
-            max-width: 320px;
-        }
+    .logo-mark {
+      width: 80px; height: 80px;
+      border-radius: 20px;
+      background: linear-gradient(135deg, #0A1628, #0D2040);
+      border: 1px solid var(--border-accent);
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 24px;
+      box-shadow: 0 0 40px rgba(0,122,255,0.2), 0 8px 32px rgba(0,0,0,0.4);
+    }
+    .logo-mark svg { width: 40px; height: 40px; }
 
-        .download-btn {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            padding: 14px 24px;
-            border-radius: 12px;
-            font-size: 15px;
-            font-weight: 500;
-            text-decoration: none;
-            transition: opacity 0.15s ease;
-        }
+    .app-name {
+      font-size: 42px;
+      font-weight: 800;
+      letter-spacing: -1.5px;
+      color: var(--text);
+      margin-bottom: 6px;
+      line-height: 1;
+    }
+    .app-name span { color: var(--accent); }
 
-        .download-btn:hover {
-            opacity: 0.85;
-        }
+    .tagline-main {
+      font-size: 17px;
+      font-weight: 400;
+      color: var(--muted);
+      margin-bottom: 32px;
+      letter-spacing: -0.2px;
+    }
 
-        .btn-appstore {
-            background-color: #1a1a1a;
-            color: #ffffff;
-        }
+    /* ── Download buttons ── */
+    .download-buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      width: 100%;
+      max-width: 300px;
+    }
 
-        .btn-playstore {
-            background-color: var(--surface);
-            color: var(--text);
-            border: 0.5px solid var(--border);
-        }
+    .download-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 14px 24px;
+      border-radius: 14px;
+      font-size: 14px;
+      font-weight: 600;
+      font-family: 'Sora', sans-serif;
+      text-decoration: none;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+      letter-spacing: -0.2px;
+    }
+    .download-btn:hover { transform: translateY(-2px); }
 
-        .btn-icon {
-            width: 20px;
-            height: 20px;
-            flex-shrink: 0;
-        }
+    .btn-appstore {
+      background: var(--text);
+      color: var(--bg);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    }
+    .btn-appstore:hover { box-shadow: 0 8px 30px rgba(0,0,0,0.4); }
 
-        /* ── Divider ── */
-        .divider {
-            width: 100%;
-            max-width: 480px;
-            height: 0.5px;
-            background-color: var(--border);
-        }
+    .btn-playstore {
+      background: var(--surface-2);
+      color: var(--text);
+      border: 1px solid var(--border);
+      box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+    }
+    .btn-playstore:hover {
+      border-color: var(--border-accent);
+      box-shadow: 0 8px 24px rgba(0,122,255,0.15);
+    }
 
-        /* ── Features ── */
-        .features {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            padding: 40px 24px;
-            max-width: 480px;
-            width: 100%;
-        }
+    .btn-icon { width: 18px; height: 18px; flex-shrink: 0; }
 
-        .feature-card {
-            background-color: var(--surface);
-            border: 0.5px solid var(--border);
-            border-radius: 16px;
-            padding: 20px;
-        }
+    /* ── Divider ── */
+    .section-divider {
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--border), transparent);
+      margin: 8px 0;
+    }
 
-        .feature-label {
-            font-size: 11px;
-            font-weight: 600;
-            color: var(--accent);
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            margin-bottom: 6px;
-        }
+    /* ── Features ── */
+    .features {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      padding: 40px 0;
+      width: 100%;
+    }
 
-        .feature-title {
-            font-size: 17px;
-            font-weight: 500;
-            color: var(--text);
-            margin-bottom: 6px;
-        }
+    .feature-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 22px;
+      transition: border-color 0.2s ease, transform 0.2s ease;
+      animation: fadeUp 0.6s ease both;
+    }
+    .feature-card:hover {
+      border-color: var(--border-accent);
+      transform: translateY(-2px);
+    }
+    .feature-card:nth-child(1) { animation-delay: 0.1s; }
+    .feature-card:nth-child(2) { animation-delay: 0.2s; }
+    .feature-card:nth-child(3) { animation-delay: 0.3s; }
+    .feature-card:nth-child(4) { animation-delay: 0.4s; }
+    .feature-card:nth-child(5) { animation-delay: 0.5s; }
 
-        .feature-body {
-            font-size: 14px;
-            color: var(--muted);
-            line-height: 1.5;
-        }
+    .feature-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
 
-        /* ── Tag pills ── */
-        .tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            padding: 0 24px 40px;
-            max-width: 480px;
-            width: 100%;
-            justify-content: center;
-        }
+    .feature-icon {
+      width: 36px; height: 36px;
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 17px;
+      flex-shrink: 0;
+    }
 
-        .tag {
-            font-size: 12px;
-            font-weight: 500;
-            padding: 5px 12px;
-            border-radius: 20px;
-        }
+    .icon-ai       { background: rgba(0,122,255,0.12); }
+    .icon-catalog  { background: rgba(52,199,89,0.12); }
+    .icon-suparun  { background: rgba(255,149,0,0.12); }
+    .icon-gamified { background: rgba(175,82,222,0.12); }
+    .icon-mastery  { background: rgba(255,59,48,0.12); }
 
-        .tag-ai {
-            background-color: #E6F9FF;
-            color: #006685;
-        }
+    .feature-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
 
-        .tag-study {
-            background-color: #E8F5EE;
-            color: #0A5C48;
-        }
+    .feature-title {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 6px;
+      letter-spacing: -0.3px;
+    }
 
-        .tag-gamified {
-            background-color: #FFF0E6;
-            color: #8A3D00;
-        }
+    .feature-body {
+      font-size: 13.5px;
+      color: var(--muted);
+      line-height: 1.65;
+    }
 
-        .tag-free {
-            background-color: #FFF8E6;
-            color: #7A4D00;
-        }
+    /* ── SupaRun hero card ── */
+    .suparun-card {
+      background: linear-gradient(135deg, #0A1628 0%, #0D1F3C 60%, #0A1020 100%);
+      border: 1px solid var(--border-accent);
+      box-shadow:
+        0 0 60px rgba(0,122,255,0.08),
+        inset 0 1px 0 rgba(255,255,255,0.05);
+      position: relative;
+      overflow: hidden;
+    }
+    .suparun-card::before {
+      content: '';
+      position: absolute;
+      top: -60px; right: -60px;
+      width: 220px; height: 220px;
+      background: radial-gradient(circle, rgba(0,122,255,0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .suparun-card:hover {
+      border-color: rgba(0,198,255,0.35);
+      box-shadow: 0 0 80px rgba(0,122,255,0.15), inset 0 1px 0 rgba(255,255,255,0.07);
+    }
 
-        .tag-decks {
-            background-color: #E8F0FF;
-            color: #1A3FAA;
-        }
+    .suparun-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: rgba(255,149,0,0.12);
+      border: 1px solid rgba(255,149,0,0.25);
+      color: #FF9500;
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border-radius: 20px;
+      margin-bottom: 12px;
+      animation: pulse 2.5s ease infinite;
+    }
 
-        /* ── Footer ── */
-        footer {
-            margin-top: auto;
-            width: 100%;
-            border-top: 0.5px solid var(--border);
-            padding: 24px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 8px;
-        }
+    /* ── Tags ── */
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      padding: 0 0 48px;
+      width: 100%;
+      justify-content: center;
+    }
 
-        .footer-links {
-            display: flex;
-            gap: 24px;
-        }
+    .tag {
+      font-size: 12px;
+      font-weight: 500;
+      padding: 5px 14px;
+      border-radius: 20px;
+      font-family: 'Sora', sans-serif;
+      border: 1px solid transparent;
+    }
 
-        .footer-links a {
-            font-size: 13px;
-            color: var(--muted);
-            text-decoration: none;
-        }
+    .tag-ai       { background: rgba(0,122,255,0.1);   color: #60B0FF; border-color: rgba(0,122,255,0.2); }
+    .tag-study    { background: rgba(52,199,89,0.1);   color: #5EDB88; border-color: rgba(52,199,89,0.2); }
+    .tag-suparun  { background: rgba(0,198,255,0.1);   color: #40D9FF; border-color: rgba(0,198,255,0.2); }
+    .tag-gamified { background: rgba(255,149,0,0.1);   color: #FFB340; border-color: rgba(255,149,0,0.2); }
+    .tag-free     { background: rgba(175,82,222,0.1);  color: #C77DFF; border-color: rgba(175,82,222,0.2); }
+    .tag-decks    { background: rgba(255,59,48,0.1);   color: #FF6B6B; border-color: rgba(255,59,48,0.2); }
 
-        .footer-links a:hover {
-            color: var(--accent);
-        }
+    /* ── Footer ── */
+    footer {
+      margin-top: auto;
+      width: 100%;
+      border-top: 1px solid var(--border);
+      padding: 28px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      position: relative;
+      z-index: 1;
+    }
 
-        .footer-copy {
-            font-size: 12px;
-            color: var(--light);
-        }
+    .footer-links { display: flex; gap: 28px; }
+    .footer-links a {
+      font-size: 13px;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+    .footer-links a:hover { color: var(--accent); }
 
-        .footer-contact {
-            font-size: 13px;
-            color: var(--muted);
-        }
+    .footer-contact { font-size: 13px; color: var(--muted); }
+    .footer-contact a { color: var(--accent); text-decoration: none; }
+    .footer-contact a:hover { text-decoration: underline; }
 
-        .footer-contact a {
-            color: var(--accent);
-            text-decoration: none;
-        }
+    .footer-copy { font-size: 12px; color: var(--light); }
 
-        .footer-contact a:hover {
-            text-decoration: underline;
-        }
+    /* ── Animations ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
 
-        /* ── Coming Soon ribbon ── */
-        .ribbon-wrap {
-            position: fixed;
-            top: 0;
-            right: 0;
-            width: 320px;
-            height: 320px;
-            overflow: hidden;
-            pointer-events: none;
-            z-index: 100;
-        }
-
-        .ribbon {
-            position: absolute;
-            top: 72px;
-            right: -80px;
-            width: 360px;
-            background-color: var(--accent);
-            color: #ffffff;
-            text-align: center;
-            font-size: 22px;
-            font-weight: 700;
-            letter-spacing: 4px;
-            text-transform: uppercase;
-            padding: 16px 0;
-            transform: rotate(45deg);
-            box-shadow: 0 4px 16px rgba(0, 122, 255, 0.4);
-        }
-    </style>
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50%       { opacity: 0.65; }
+    }
+  </style>
 </head>
-
 <body>
 
-    <div class="ribbon-wrap">
-        <div class="ribbon">Coming Soon</div>
-    </div>
+  <div class="ribbon-wrap">
+    <div class="ribbon">Coming Soon</div>
+  </div>
+
+  <div class="page">
 
     <!-- Hero -->
     <section class="hero">
-        <div class="app-name">Supa<span>flash</span></div>
-        <p class="tagline-main">Learn anything. Just ask.</p>
-        <p class="tagline">Paste your notes, upload a document, or describe what you want to learn — Supaflash turns it
-            into a gamified flash card deck in seconds.</p>
+      <div class="logo-mark">
+        <img src="supaflash_logo.png"
+      </div>
 
-        <div class="download-buttons">
-            <a href="https://apps.apple.com/us/app/supaflash/id000000000" class="download-btn btn-appstore">
-                <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor">
-                    <path
-                        d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z" />
-                </svg>
-                Download on the App Store
-            </a>
-            <a href="https://play.google.com/store/apps/details?id=com.supaflash.app"
-                class="download-btn btn-playstore">
-                <svg class="btn-icon" viewBox="0 0 24 24" fill="none">
-                    <path d="M3.18 23.5c.3.17.64.22.98.14l12.08-6.97-2.84-2.84L3.18 23.5z" fill="#EA4335" />
-                    <path d="M21.54 10.27L18.9 8.74l-3.17 3.17 3.17 3.17 2.67-1.54c.76-.44.76-1.61-.03-2.27z"
-                        fill="#FBBC05" />
-                    <path d="M3.18.5C2.84.42 2.5.47 2.2.64L13.4 11.84l2.34-2.34L3.18.5z" fill="#4285F4" />
-                    <path
-                        d="M2.2.64C1.84.87 1.6 1.3 1.6 1.87v20.26c0 .57.24 1 .6 1.23l.08.05L13.4 12.27v-.27L2.28.59 2.2.64z"
-                        fill="#34A853" />
-                </svg>
-                Get it on Google Play
-            </a>
-        </div>
+      <h1 class="app-name">Supa<span>flash</span></h1>
+      <p class="tagline-main">Learn anything. Just ask.</p>
+
+      <div class="download-buttons">
+        <a href="https://apps.apple.com/us/app/supaflash/id000000000" class="download-btn btn-appstore">
+          <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+          </svg>
+          Download on the App Store
+        </a>
+        <a href="https://play.google.com/store/apps/details?id=com.supaflash.app" class="download-btn btn-playstore">
+          <svg class="btn-icon" viewBox="0 0 24 24" fill="none">
+            <path d="M3.18 23.5c.3.17.64.22.98.14l12.08-6.97-2.84-2.84L3.18 23.5z" fill="#EA4335"/>
+            <path d="M21.54 10.27L18.9 8.74l-3.17 3.17 3.17 3.17 2.67-1.54c.76-.44.76-1.61-.03-2.27z" fill="#FBBC05"/>
+            <path d="M3.18.5C2.84.42 2.5.47 2.2.64L13.4 11.84l2.34-2.34L3.18.5z" fill="#4285F4"/>
+            <path d="M2.2.64C1.84.87 1.6 1.3 1.6 1.87v20.26c0 .57.24 1 .6 1.23l.08.05L13.4 12.27v-.27L2.28.59 2.2.64z" fill="#34A853"/>
+          </svg>
+          Get it on Google Play
+        </a>
+      </div>
     </section>
 
-    <div class="divider"></div>
+    <div class="section-divider"></div>
 
     <!-- Features -->
     <section class="features">
-        <div class="feature-card">
-            <div class="feature-label">SupaAI</div>
-            <div class="feature-title">Your personal flash card generator</div>
-            <div class="feature-body">Describe what you want to learn, paste your notes, or upload a PDF or Word doc —
-                SupaAI builds a ready-to-study flash card deck in seconds.</div>
+
+      <div class="feature-card">
+        <div class="feature-header">
+          <div class="feature-icon icon-ai">✦</div>
+          <div class="feature-label">SupaAI</div>
         </div>
-        <div class="feature-card">
-            <div class="feature-label">Catalog</div>
-            <div class="feature-title">Hand-curated decks on everything</div>
-            <div class="feature-body">Browse hundreds of expertly crafted decks across languages, science, history,
-                math, anatomy, pop culture, and more. All free, forever.</div>
+        <div class="feature-title">Your personal flash card generator</div>
+        <div class="feature-body">Describe what you want to learn, paste your notes, or upload a PDF or Word doc — SupaAI builds a ready-to-study flash card deck in seconds. No prep. No formatting. Just results.</div>
+      </div>
+
+      <div class="feature-card suparun-card">
+        <div class="suparun-badge">⚡ New</div>
+        <div class="feature-header">
+          <div class="feature-icon icon-suparun">🎮</div>
+          <div class="feature-label" style="color: #FF9500;">SupaRun</div>
         </div>
-        <div class="feature-card">
-            <div class="feature-label">Gamified</div>
-            <div class="feature-title">Study that actually feels like progress</div>
-            <div class="feature-body">Earn XP, build daily streaks, and climb mastery tiers from Bronze to Legend. Every
-                session moves you forward.</div>
+        <div class="feature-title">Turn anything you want to learn into a game</div>
+        <div class="feature-body">Use SupaAI to gamify your own content — your notes, your subject, your rules. Read the question, swipe to the right answer before the walls close in. Or play one of our hand-crafted SupaRun decks. Study that actually feels like play.</div>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-header">
+          <div class="feature-icon icon-catalog">📚</div>
+          <div class="feature-label">Catalog</div>
         </div>
-        <div class="feature-card">
-            <div class="feature-label">Mastery</div>
-            <div class="feature-title">Know exactly where you stand</div>
-            <div class="feature-body">Track your progress card by card. Supaflash surfaces what you need to drill and
-                celebrates what you've mastered.</div>
+        <div class="feature-title">Hand-curated decks on everything</div>
+        <div class="feature-body">Browse hundreds of expertly crafted decks across languages, science, history, math, anatomy, pop culture, and more. Download to study as flash cards or play as SupaRun games. All free, forever.</div>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-header">
+          <div class="feature-icon icon-gamified">🏆</div>
+          <div class="feature-label">Gamified</div>
         </div>
+        <div class="feature-title">Every session moves you forward</div>
+        <div class="feature-body">Earn XP, build daily streaks, and climb mastery tiers from Bronze to Legend. Whether you're flipping cards or sprinting through SupaRun — every moment of study counts.</div>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-header">
+          <div class="feature-icon icon-mastery">🎯</div>
+          <div class="feature-label">Mastery</div>
+        </div>
+        <div class="feature-title">Know exactly where you stand</div>
+        <div class="feature-body">Track your progress card by card. Supaflash surfaces what you need to drill and celebrates what you've mastered. The more you use it, the smarter it gets about what you need next.</div>
+      </div>
+
     </section>
 
     <!-- Tags -->
     <div class="tags">
-        <span class="tag tag-ai">AI-Powered</span>
-        <span class="tag tag-study">Flash Cards</span>
-        <span class="tag tag-gamified">Gamified</span>
-        <span class="tag tag-free">Free Forever</span>
-        <span class="tag tag-decks">200+ Decks</span>
+      <span class="tag tag-ai">AI-Powered</span>
+      <span class="tag tag-study">Flash Cards</span>
+      <span class="tag tag-suparun">SupaRun</span>
+      <span class="tag tag-gamified">Gamified</span>
+      <span class="tag tag-free">Free Forever</span>
+      <span class="tag tag-decks">200+ Decks</span>
     </div>
 
-    <!-- Footer -->
-    <footer>
-        <div class="footer-links">
-            <a href="privacy-policy.html">Privacy Policy</a>
-            <a href="terms-of-service.html">Terms of Service</a>
-        </div>
-        <p class="footer-contact">Questions? <a href="mailto:joshua9park@gmail.com">joshua9park@gmail.com</a></p>
-        <p class="footer-copy">&copy; 2026 Supaflash. All rights reserved.</p>
-    </footer>
+  </div>
+
+  <footer>
+    <div class="footer-links">
+      <a href="privacy-policy.html">Privacy Policy</a>
+      <a href="terms-of-service.html">Terms of Service</a>
+    </div>
+    <p class="footer-contact">Questions? <a href="mailto:joshua9park@gmail.com">joshua9park@gmail.com</a></p>
+    <p class="footer-copy">&copy; 2026 Supaflash. All rights reserved.</p>
+  </footer>
 
 </body>
-
 </html>
