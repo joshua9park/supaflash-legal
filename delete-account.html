@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Delete Your Account — Supaflash</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --accent: #007AFF;
+      --text: #1a1a1a;
+      --muted: #606060;
+      --light: #a0a0a0;
+      --border: #ebebeb;
+      --surface: #f7f7f7;
+      --danger: #FF3B30;
+      --danger-bg: #FFF0EF;
+      --danger-border: #FFD0CC;
+    }
+    body {
+      font-family: 'Sora', sans-serif;
+      background: #ffffff;
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .page { width: 100%; max-width: 560px; padding: 60px 24px 80px; }
+    .app-name { font-size: 22px; font-weight: 700; color: var(--text); margin-bottom: 40px; }
+    .app-name span { color: var(--accent); }
+    h1 { font-size: 28px; font-weight: 700; letter-spacing: -0.5px; margin-bottom: 12px; }
+    .intro { font-size: 15px; color: var(--muted); line-height: 1.7; margin-bottom: 40px; }
+    .section { margin-bottom: 36px; }
+    .section-title { font-size: 13px; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 14px; }
+    .section-body { font-size: 15px; color: var(--muted); line-height: 1.7; }
+    .steps { display: flex; flex-direction: column; gap: 16px; margin-top: 4px; }
+    .step { display: flex; align-items: flex-start; gap: 16px; background: var(--surface); border: 0.5px solid var(--border); border-radius: 14px; padding: 16px 18px; }
+    .step-num { width: 28px; height: 28px; border-radius: 50%; background: var(--accent); color: #fff; font-size: 13px; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px; }
+    .step-text { font-size: 14px; color: var(--text); line-height: 1.6; }
+    .step-text strong { font-weight: 600; }
+    .warning { background: var(--danger-bg); border: 1px solid var(--danger-border); border-radius: 14px; padding: 18px 20px; margin-bottom: 36px; }
+    .warning-title { font-size: 14px; font-weight: 700; color: var(--danger); margin-bottom: 8px; }
+    .warning-body { font-size: 14px; color: #8B2020; line-height: 1.6; }
+    .data-table { width: 100%; border-collapse: collapse; font-size: 14px; margin-top: 4px; }
+    .data-table th { text-align: left; font-weight: 600; color: var(--text); padding: 10px 14px; background: var(--surface); border: 0.5px solid var(--border); font-size: 13px; }
+    .data-table td { padding: 12px 14px; border: 0.5px solid var(--border); color: var(--muted); line-height: 1.5; vertical-align: top; }
+    .data-table tr:nth-child(even) td { background: var(--surface); }
+    .badge { display: inline-block; font-size: 11px; font-weight: 600; padding: 2px 10px; border-radius: 20px; }
+    .badge-deleted { background: #E8F5EE; color: #0A5C48; }
+    .badge-retained { background: #FFF8E6; color: #7A4D00; }
+    .email-box { background: var(--surface); border: 0.5px solid var(--border); border-radius: 14px; padding: 20px; margin-top: 4px; }
+    .email-box p { font-size: 14px; color: var(--muted); line-height: 1.6; margin-bottom: 10px; }
+    .email-link { font-size: 14px; font-weight: 600; color: var(--accent); text-decoration: none; }
+    .email-link:hover { text-decoration: underline; }
+    .divider { width: 100%; height: 0.5px; background: var(--border); margin: 36px 0; }
+    footer { font-size: 12px; color: var(--light); text-align: center; margin-top: 60px; }
+    footer a { color: var(--light); text-decoration: none; }
+    footer a:hover { color: var(--accent); }
+  </style>
+</head>
+<body>
+  <div class="page">
+
+    <div class="app-name">Supa<span>flash</span></div>
+
+    <h1>Delete Your Account</h1>
+    <p class="intro">
+      You can delete your Supaflash account at any time directly from within the app.
+      Account deletion is permanent and cannot be undone. Please read the information
+      below carefully before proceeding.
+    </p>
+
+    <div class="warning">
+      <div class="warning-title">⚠️ This action is permanent</div>
+      <div class="warning-body">
+        Deleting your account is irreversible. All your data — including your decks,
+        streaks, XP, and subscription history — will be permanently removed and cannot
+        be recovered. If you have an active Pro subscription, cancel it before deleting
+        your account to avoid future charges.
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">How to Delete Your Account</div>
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-text">Open <strong>Supaflash</strong> on your device.</div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-text">Tap <strong>Profile</strong> in the bottom navigation bar.</div>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <div class="step-text">Scroll down and tap <strong>Settings</strong>.</div>
+        </div>
+        <div class="step">
+          <div class="step-num">4</div>
+          <div class="step-text">Tap <strong>Delete Account</strong> and confirm when prompted.</div>
+        </div>
+        <div class="step">
+          <div class="step-num">5</div>
+          <div class="step-text">Your account and all associated data will be permanently deleted immediately.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="section">
+      <div class="section-title">What Data Is Deleted</div>
+      <div class="section-body" style="margin-bottom: 16px;">
+        When you delete your account, the following data is handled as described below.
+        Deletion is processed immediately upon confirmation.
+      </div>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Data Type</th>
+            <th>Action</th>
+            <th>Retention</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Account &amp; email address</td>
+            <td><span class="badge badge-deleted">Deleted</span></td>
+            <td>Immediately</td>
+          </tr>
+          <tr>
+            <td>Streaks &amp; XP history</td>
+            <td><span class="badge badge-deleted">Deleted</span></td>
+            <td>Immediately</td>
+          </tr>
+          <tr>
+            <td>Downloaded catalog decks</td>
+            <td><span class="badge badge-deleted">Deleted</span></td>
+            <td>Immediately</td>
+          </tr>
+          <tr>
+            <td>AI-generated decks &amp; games</td>
+            <td><span class="badge badge-deleted">Deleted</span></td>
+            <td>Immediately</td>
+          </tr>
+          <tr>
+            <td>Subscription &amp; purchase records</td>
+            <td><span class="badge badge-retained">Retained</span></td>
+            <td>Up to 90 days (required by Apple/Google for dispute resolution)</td>
+          </tr>
+          <tr>
+            <td>Anonymized analytics data</td>
+            <td><span class="badge badge-retained">Retained</span></td>
+            <td>Retained in anonymized, non-identifiable form</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="section">
+      <div class="section-title">Active Pro Subscription</div>
+      <div class="section-body">
+        Deleting your Supaflash account does <strong>not</strong> automatically cancel your
+        Pro subscription. If you have an active subscription, you must cancel it separately
+        through your device's subscription settings before deleting your account to avoid
+        future charges.
+        <br><br>
+        <strong>iOS:</strong> Settings → Apple ID → Subscriptions → Supaflash → Cancel<br>
+        <strong>Android:</strong> Play Store → Profile → Payments &amp; subscriptions → Subscriptions → Supaflash → Cancel
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="section">
+      <div class="section-title">Can't Access the App?</div>
+      <div class="email-box">
+        <p>
+          If you are unable to access your account within the app to delete it,
+          you can submit a deletion request by emailing us directly. Please include
+          the email address associated with your Supaflash account.
+        </p>
+        <a href="mailto:joshua9park@gmail.com" class="email-link">joshua9park@gmail.com</a>
+      </div>
+    </div>
+
+    <footer>
+      <p>&copy; 2026 Supaflash. All rights reserved.</p>
+      <p style="margin-top: 8px;">
+        <a href="privacy-policy.html">Privacy Policy</a> &nbsp;·&nbsp;
+        <a href="terms-of-service.html">Terms of Service</a>
+      </p>
+    </footer>
+
+  </div>
+</body>
+</html>

@@ -1,19 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Privacy Policy — Supaflash</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    *,
-    *::before,
-    *::after {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
       --accent: #007AFF;
       --text: #1a1a1a;
@@ -22,10 +17,9 @@
       --border: #ebebeb;
       --surface: #f7f7f7;
     }
-
     body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-      background-color: #ffffff;
+      font-family: 'Sora', sans-serif;
+      background: #ffffff;
       color: var(--text);
       font-size: 16px;
       line-height: 1.7;
@@ -34,186 +28,52 @@
       flex-direction: column;
       align-items: center;
     }
-
-    .wrapper {
-      width: 100%;
-      max-width: 680px;
-      padding: 0 24px 80px;
-    }
-
-    nav {
-      padding: 28px 0 0;
-    }
-
-    nav a {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      font-size: 13px;
-      color: var(--muted);
-      text-decoration: none;
-    }
-
-    nav a:hover {
-      color: var(--accent);
-    }
-
-    header {
-      padding: 40px 0 32px;
-      text-align: center;
-      border-bottom: 0.5px solid var(--border);
-      margin-bottom: 40px;
-    }
-
-    .app-icon {
-      width: 64px;
-      height: 64px;
-      border-radius: 14px;
-      margin-bottom: 12px;
-    }
-
-    header h1 {
-      font-size: clamp(1.5rem, 5vw, 2rem);
-      font-weight: 500;
-      color: var(--text);
-      margin-bottom: 6px;
-    }
-
-    .meta {
-      font-size: 13px;
-      color: var(--light);
-    }
-
-    section {
-      margin-bottom: 32px;
-      padding-bottom: 32px;
-      border-bottom: 0.5px solid var(--border);
-    }
-
-    section:last-of-type {
-      border-bottom: none;
-    }
-
-    .section-label {
-      font-size: 11px;
-      font-weight: 600;
-      color: var(--accent);
-      text-transform: uppercase;
-      letter-spacing: 1.5px;
-      margin-bottom: 8px;
-    }
-
-    section h2 {
-      font-size: 17px;
-      font-weight: 500;
-      color: var(--text);
-      margin-bottom: 12px;
-    }
-
-    section h3 {
-      font-size: 14px;
-      font-weight: 600;
-      color: var(--muted);
-      margin: 16px 0 6px;
-    }
-
-    section p {
-      font-size: 15px;
-      color: #3a3a3a;
-      margin-bottom: 10px;
-    }
-
-    section p:last-child {
-      margin-bottom: 0;
-    }
-
-    ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-    }
-
-    ul li {
-      font-size: 15px;
-      color: #3a3a3a;
-      padding-left: 16px;
-      position: relative;
-    }
-
-    ul li::before {
-      content: '·';
-      position: absolute;
-      left: 4px;
-      color: var(--light);
-    }
-
-    .highlight-box {
-      background-color: var(--surface);
-      border: 0.5px solid var(--border);
-      border-left: 3px solid var(--accent);
-      border-radius: 0 12px 12px 0;
-      padding: 14px 16px;
-      margin-top: 14px;
-    }
-
-    .highlight-box p {
-      font-size: 14px;
-      color: var(--muted);
-      margin: 0;
-    }
-
-    a {
-      color: var(--accent);
-      text-decoration: none;
-    }
-
-    a:hover {
-      text-decoration: underline;
-    }
-
-    footer {
-      border-top: 0.5px solid var(--border);
-      padding-top: 24px;
-      text-align: center;
-      margin-top: 8px;
-    }
-
-    footer p {
-      font-size: 13px;
-      color: var(--light);
-      margin-bottom: 4px;
-    }
-
-    @media (max-width: 480px) {
-      header h1 {
-        font-size: 1.4rem;
-      }
-    }
+    .wrapper { width: 100%; max-width: 560px; padding: 0 24px 80px; }
+    nav { padding: 28px 0 0; }
+    nav a { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; color: var(--muted); text-decoration: none; }
+    nav a:hover { color: var(--accent); }
+    header { padding: 40px 0 32px; text-align: center; border-bottom: 0.5px solid var(--border); margin-bottom: 40px; }
+    .app-name { font-size: 22px; font-weight: 700; color: var(--text); margin-bottom: 16px; }
+    .app-name span { color: var(--accent); }
+    header h1 { font-size: 28px; font-weight: 700; letter-spacing: -0.5px; margin-bottom: 6px; }
+    .meta { font-size: 13px; color: var(--light); }
+    section { margin-bottom: 32px; padding-bottom: 32px; border-bottom: 0.5px solid var(--border); }
+    section:last-of-type { border-bottom: none; }
+    .section-title { font-size: 13px; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 8px; }
+    section h2 { font-size: 17px; font-weight: 600; color: var(--text); margin-bottom: 12px; letter-spacing: -0.2px; }
+    section h3 { font-size: 14px; font-weight: 600; color: var(--muted); margin: 16px 0 6px; }
+    section p { font-size: 15px; color: #3a3a3a; margin-bottom: 10px; }
+    section p:last-child { margin-bottom: 0; }
+    ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 6px; }
+    ul li { font-size: 15px; color: #3a3a3a; padding-left: 16px; position: relative; }
+    ul li::before { content: '·'; position: absolute; left: 4px; color: var(--light); }
+    .highlight-box { background: var(--surface); border: 0.5px solid var(--border); border-left: 3px solid var(--accent); border-radius: 0 12px 12px 0; padding: 14px 16px; margin-top: 14px; }
+    .highlight-box p { font-size: 14px; color: var(--muted); margin: 0; }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    footer { border-top: 0.5px solid var(--border); padding-top: 24px; text-align: center; margin-top: 8px; }
+    footer p { font-size: 12px; color: var(--light); margin-bottom: 4px; }
+    footer a { color: var(--light); }
+    footer a:hover { color: var(--accent); }
   </style>
 </head>
-
 <body>
   <div class="wrapper">
-
     <nav><a href="index.html">← Back to Supaflash</a></nav>
-
     <header>
+      <div class="app-name">Supa<span>flash</span></div>
       <h1>Privacy Policy</h1>
       <p class="meta">Last updated: April 4, 2026</p>
     </header>
 
     <section>
-      <div class="section-label">Overview</div>
+      <div class="section-title">Overview</div>
       <h2>Our commitment to your privacy</h2>
-      <p>Supaflash ("we", "our", or "us") is committed to protecting your privacy. This policy explains what information
-        we collect, how we use it, and your rights regarding your data.</p>
+      <p>Supaflash ("we", "our", or "us") is committed to protecting your privacy. This policy explains what information we collect, how we use it, and your rights regarding your data.</p>
     </section>
 
     <section>
-      <div class="section-label">Data Collection</div>
+      <div class="section-title">Data Collection</div>
       <h2>Information We Collect</h2>
       <h3>Information you provide</h3>
       <ul>
@@ -226,35 +86,30 @@
       <ul>
         <li>Flash card study session results and card progress</li>
         <li>Decks you download from the Supaflash catalog</li>
-        <li>Decks you create using SupaAI or Smart Import</li>
+        <li>Decks you create using SupaAI</li>
         <li>XP earned and daily streak activity</li>
         <li>AI generation usage count</li>
       </ul>
     </section>
 
     <section>
-      <div class="section-label">AI Content</div>
+      <div class="section-title">AI Content</div>
       <h2>SupaAI and Content You Submit</h2>
-      <p>When you use SupaAI features — including Ask SupaAI, Smart Import from text, PDF, or document — the content you
-        provide is sent to Google's Gemini API for processing. This content is used solely to generate flash cards on
-        your behalf.</p>
-      <p>We strongly advise against submitting personal, sensitive, confidential, or proprietary information through
-        SupaAI features. Do not include passwords, financial data, health information, or personal details about
-        yourself or others.</p>
-      <p>AI-generated flash card content is processed by Google's Gemini API. Google's use of this data is governed by
-        their own privacy policy and terms of service.</p>
+      <p>When you use SupaAI features — including Ask SupaAI, Paste Notes, PDF, or Word document upload — the content you provide is sent to Google's Gemini API for processing. This content is used solely to generate flash cards or SupaRun games on your behalf.</p>
+      <p>We strongly advise against submitting personal, sensitive, confidential, or proprietary information through SupaAI features. Do not include passwords, financial data, health information, or personal details about yourself or others.</p>
+      <p>AI-generated content is processed by Google's Gemini API. Google's use of this data is governed by their own privacy policy and terms of service.</p>
       <div class="highlight-box">
         <p>We do not use your submitted content to train AI models and we do not sell your content to third parties.</p>
       </div>
     </section>
 
     <section>
-      <div class="section-label">Usage</div>
+      <div class="section-title">Usage</div>
       <h2>How We Use Your Information</h2>
       <p>We use the information we collect to:</p>
       <ul>
         <li>Provide and operate the app, including your study sessions, flash card library, and progress tracking</li>
-        <li>Generate flash card decks from content you submit via SupaAI features</li>
+        <li>Generate flash card decks and SupaRun games from content you submit via SupaAI</li>
         <li>Track your XP, streaks, and mastery progress</li>
         <li>Enforce AI generation usage limits (free tier vs Pro)</li>
         <li>Serve and measure advertising to support the free operation of the app</li>
@@ -266,70 +121,51 @@
     </section>
 
     <section>
-      <div class="section-label">Third Parties</div>
+      <div class="section-title">Third Parties</div>
       <h2>Third-Party Services</h2>
-      <p><strong>Supabase</strong> — We use Supabase to store your account data, deck library, and app activity.
-        Supabase processes data on our behalf under their own privacy policy.</p>
-      <p><strong>Google Gemini</strong> — Content you submit to SupaAI features is processed by Google's Gemini API to
-        generate flash card decks. Google's privacy policy governs their handling of this data.</p>
-      <p><strong>Sign in with Apple / Google Sign-In</strong> — When you sign in using Apple or Google, we receive basic
-        profile information (name and email) from those providers. Their respective privacy policies govern what data
-        they collect during the sign-in process.</p>
-      <p><strong>Google AdMob</strong> — Supaflash displays banner advertisements provided by Google AdMob. AdMob may
-        use cookies, device identifiers, and similar technologies to serve relevant ads based on your interests and
-        activity.</p>
-      <p><strong>RevenueCat</strong> — We use RevenueCat to manage in-app purchases and subscription entitlements.
-        RevenueCat processes purchase data on our behalf under their own privacy policy.</p>
+      <p><strong>Supabase</strong> — We use Supabase to store your account data, deck library, and app activity. Supabase processes data on our behalf under their own privacy policy.</p>
+      <p><strong>Google Gemini</strong> — Content you submit to SupaAI features is processed by Google's Gemini API to generate flash card decks and SupaRun games. Google's privacy policy governs their handling of this data.</p>
+      <p><strong>Sign in with Apple / Google Sign-In</strong> — When you sign in using Apple or Google, we receive basic profile information (name and email) from those providers. Their respective privacy policies govern what data they collect during the sign-in process.</p>
+      <p><strong>Google AdMob</strong> — Supaflash displays advertisements provided by Google AdMob. AdMob may use cookies, device identifiers, and similar technologies to serve relevant ads based on your interests and activity.</p>
+      <p><strong>RevenueCat</strong> — We use RevenueCat to manage in-app purchases and subscription entitlements. RevenueCat processes purchase data on our behalf under their own privacy policy.</p>
     </section>
 
     <section>
-      <div class="section-label">Advertising</div>
+      <div class="section-title">Advertising</div>
       <h2>Advertising</h2>
-      <p>Supaflash displays banner advertisements provided by Google AdMob to support free access to the app and its
-        content.</p>
-      <p>On iOS, we request your permission through Apple's App Tracking Transparency framework before allowing
-        personalized advertising. If you decline, you will still see ads but they will not be personalized.</p>
-      <p>If you are located in the European Union or European Economic Area, you will be asked to provide consent before
-        personalized ads are shown. You may withdraw or change your consent at any time by contacting us.</p>
-      <p>To learn more about how Google uses data from apps that use its services, visit: <a
-          href="https://google.com/policies/privacy/partners" target="_blank"
-          rel="noopener">google.com/policies/privacy/partners</a></p>
+      <p>Supaflash displays advertisements provided by Google AdMob to support free access to the app and its content.</p>
+      <p>On iOS, we request your permission through Apple's App Tracking Transparency framework before allowing personalized advertising. If you decline, you will still see ads but they will not be personalized.</p>
+      <p>If you are located in the European Union or European Economic Area, you will be asked to provide consent before personalized ads are shown. You may withdraw or change your consent at any time by contacting us.</p>
+      <p>To learn more about how Google uses data from apps that use its services, visit: <a href="https://google.com/policies/privacy/partners" target="_blank" rel="noopener">google.com/policies/privacy/partners</a></p>
     </section>
 
     <section id="deletion">
-      <div class="section-label">Account</div>
+      <div class="section-title">Account</div>
       <h2>Account Deletion &amp; Data Removal</h2>
-      <p>We offer two ways to delete your account and all associated data (including study progress, downloaded decks,
-        created decks, XP, and streaks):</p>
+      <p>We offer two ways to delete your account and all associated data (including study progress, downloaded decks, created decks, XP, and streaks):</p>
       <h3>In-App Deletion</h3>
-      <p>Go to <strong>Profile → Delete account</strong>. This will immediately and permanently remove your data from
-        our servers.</p>
+      <p>Go to <strong>Profile → Settings → Delete Account</strong>. This will immediately and permanently remove your data from our servers.</p>
       <h3>Email Request</h3>
-      <p>If you no longer have the app installed, email us at <a
-          href="mailto:joshua9park@gmail.com">joshua9park@gmail.com</a>. Your request must come from the email address
-        associated with your Apple or Google account used for Supaflash.</p>
+      <p>If you no longer have the app installed, email us at <a href="mailto:joshua9park@gmail.com">joshua9park@gmail.com</a>. Your request must come from the email address associated with your Apple or Google account used for Supaflash.</p>
       <div class="highlight-box">
         <p>Once processed, all account data is permanently purged and cannot be recovered.</p>
       </div>
     </section>
 
     <section>
-      <div class="section-label">Local Storage</div>
+      <div class="section-title">Local Storage</div>
       <h2>Data Stored on Your Device</h2>
-      <p>Supaflash stores your downloaded flash card decks and study progress locally on your device for offline access.
-        This data is tied to your account and is cleared when you sign out or delete your account.</p>
+      <p>Supaflash stores your downloaded flash card decks, user-created decks, and SupaRun games locally on your device for offline access. This data is cleared when you sign out or delete your account.</p>
     </section>
 
     <section>
-      <div class="section-label">Children</div>
+      <div class="section-title">Children</div>
       <h2>Children's Privacy</h2>
-      <p>Supaflash is not directed at children under 13. We do not knowingly collect personal information from children
-        under 13. If you believe a child has provided us with their information, please contact us and we will delete it
-        promptly.</p>
+      <p>Supaflash is not directed at children under 13. We do not knowingly collect personal information from children under 13. If you believe a child has provided us with their information, please contact us and we will delete it promptly.</p>
     </section>
 
     <section>
-      <div class="section-label">Your Rights</div>
+      <div class="section-title">Your Rights</div>
       <h2>Your Rights</h2>
       <p>You have the right to:</p>
       <ul>
@@ -340,25 +176,24 @@
     </section>
 
     <section>
-      <div class="section-label">Updates</div>
+      <div class="section-title">Updates</div>
       <h2>Changes to This Policy</h2>
-      <p>We may update this privacy policy from time to time. We will notify you of significant changes by updating the
-        date at the top of this page.</p>
+      <p>We may update this privacy policy from time to time. We will notify you of significant changes by updating the date at the top of this page.</p>
     </section>
 
     <section>
-      <div class="section-label">Contact</div>
+      <div class="section-title">Contact</div>
       <h2>Contact</h2>
-      <p>If you have any questions about this privacy policy, please contact us at <a
-          href="mailto:joshua9park@gmail.com">joshua9park@gmail.com</a>.</p>
+      <p>If you have any questions about this privacy policy, please contact us at <a href="mailto:joshua9park@gmail.com">joshua9park@gmail.com</a>.</p>
     </section>
 
     <footer>
-      <p><a href="mailto:joshua9park@gmail.com">joshua9park@gmail.com</a></p>
       <p>&copy; 2026 Supaflash. All rights reserved.</p>
+      <p style="margin-top: 8px;">
+        <a href="terms-of-service.html">Terms of Service</a> &nbsp;·&nbsp;
+        <a href="delete-account.html">Delete Account</a>
+      </p>
     </footer>
-
   </div>
 </body>
-
 </html>
