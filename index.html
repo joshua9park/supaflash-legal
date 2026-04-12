@@ -73,7 +73,8 @@
       z-index: 0;
     }
 
-    /* ── Ribbon ── */
+    <!-- ribbon commented out as requested -->
+    <!--
     .ribbon-wrap {
       position: fixed;
       top: 0; right: 0;
@@ -97,6 +98,7 @@
       transform: rotate(45deg);
       box-shadow: 0 4px 20px rgba(0,122,255,0.4);
     }
+    -->
 
     /* ── Page wrapper ── */
     .page {
@@ -228,6 +230,7 @@
     .feature-card:nth-child(3) { animation-delay: 0.3s; }
     .feature-card:nth-child(4) { animation-delay: 0.4s; }
     .feature-card:nth-child(5) { animation-delay: 0.5s; }
+    .feature-card:nth-child(6) { animation-delay: 0.6s; }
 
     .feature-header {
       display: flex;
@@ -245,6 +248,7 @@
     }
 
     .icon-ai       { background: rgba(0,122,255,0.12); }
+    .icon-exam     { background: rgba(255,59,48,0.12); }
     .icon-catalog  { background: rgba(52,199,89,0.12); }
     .icon-suparun  { background: rgba(255,149,0,0.12); }
     .icon-gamified { background: rgba(175,82,222,0.12); }
@@ -272,6 +276,30 @@
       line-height: 1.65;
     }
 
+    /* ── Exam Prep card ── */
+    .exam-card {
+      background: linear-gradient(135deg, #12080A 0%, #1E0A0E 60%, #100608 100%);
+      border: 1px solid rgba(255, 59, 48, 0.2);
+      box-shadow:
+        0 0 60px rgba(255,59,48,0.06),
+        inset 0 1px 0 rgba(255,255,255,0.04);
+      position: relative;
+      overflow: hidden;
+    }
+    .exam-card::before {
+      content: '';
+      position: absolute;
+      top: -60px; right: -60px;
+      width: 220px; height: 220px;
+      background: radial-gradient(circle, rgba(255,59,48,0.1) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .exam-card:hover {
+      border-color: rgba(255,59,48,0.35);
+      box-shadow: 0 0 80px rgba(255,59,48,0.12), inset 0 1px 0 rgba(255,255,255,0.06);
+    }
+    .exam-card .feature-label { color: #FF3B30; }
+
     /* ── SupaRun hero card ── */
     .suparun-card {
       background: linear-gradient(135deg, #0A1628 0%, #0D1F3C 60%, #0A1020 100%);
@@ -293,23 +321,6 @@
     .suparun-card:hover {
       border-color: rgba(0,198,255,0.35);
       box-shadow: 0 0 80px rgba(0,122,255,0.15), inset 0 1px 0 rgba(255,255,255,0.07);
-    }
-
-    .suparun-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-      background: rgba(255,149,0,0.12);
-      border: 1px solid rgba(255,149,0,0.25);
-      color: #FF9500;
-      font-size: 9px;
-      font-weight: 700;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      padding: 3px 10px;
-      border-radius: 20px;
-      margin-bottom: 12px;
-      animation: pulse 2.5s ease infinite;
     }
 
     /* ── Tags ── */
@@ -336,7 +347,7 @@
     .tag-suparun  { background: rgba(0,198,255,0.1);   color: #40D9FF; border-color: rgba(0,198,255,0.2); }
     .tag-gamified { background: rgba(255,149,0,0.1);   color: #FFB340; border-color: rgba(255,149,0,0.2); }
     .tag-free     { background: rgba(175,82,222,0.1);  color: #C77DFF; border-color: rgba(175,82,222,0.2); }
-    .tag-decks    { background: rgba(255,59,48,0.1);   color: #FF6B6B; border-color: rgba(255,59,48,0.2); }
+    .tag-exam     { background: rgba(255,59,48,0.1);   color: #FF6B6B; border-color: rgba(255,59,48,0.2); }
 
     /* ── Footer ── */
     footer {
@@ -381,9 +392,11 @@
 </head>
 <body>
 
+  <!--
   <div class="ribbon-wrap">
     <div class="ribbon">Coming Soon</div>
   </div>
+  -->
 
   <div class="page">
 
@@ -398,7 +411,7 @@
       <p class="tagline-main">Learn anything. Just ask.</p>
 
       <div class="download-buttons">
-        <a href="https://apps.apple.com/us/app/supaflash/id000000000" class="download-btn btn-appstore">
+        <a href="https://apps.apple.com/us/app/supaflash/id6761511400" class="download-btn btn-appstore">
           <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor">
             <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
           </svg>
@@ -430,8 +443,16 @@
         <div class="feature-body">Describe what you want to learn, paste your notes, or upload a PDF or Word doc — SupaAI builds a ready-to-study flash card deck in seconds. No prep. No formatting. Just results.</div>
       </div>
 
+      <div class="feature-card exam-card">
+        <div class="feature-header">
+          <div class="feature-icon icon-exam">🎓</div>
+          <div class="feature-label">Exam Prep Room</div>
+        </div>
+        <div class="feature-title">Serious prep for high-stakes exams</div>
+        <div class="feature-body">Dedicated study rooms for AP exams and the SAT — built with real exam-style questions, passage-based reasoning, and a readiness score that tells you exactly where you stand. Know what you know. Fix what you don't.</div>
+      </div>
+
       <div class="feature-card suparun-card">
-        <div class="suparun-badge">⚡ New</div>
         <div class="feature-header">
           <div class="feature-icon icon-suparun">🎮</div>
           <div class="feature-label" style="color: #FF9500;">SupaRun</div>
@@ -476,7 +497,7 @@
       <span class="tag tag-suparun">SupaRun</span>
       <span class="tag tag-gamified">Gamified</span>
       <span class="tag tag-free">Free Forever</span>
-      <span class="tag tag-decks">200+ Decks</span>
+      <span class="tag tag-exam">Exam Prep</span>
     </div>
 
   </div>
