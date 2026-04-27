@@ -4,6 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Supaflash — Learn Anything. Just Ask.</title>
+
+  <!-- Apple Smart App Banner — shows natively in Safari on iPhone/iPad -->
+  <meta name="apple-itunes-app" content="app-id=6761511400">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -99,6 +103,66 @@
       box-shadow: 0 4px 20px rgba(0,122,255,0.4);
     }
     -->
+
+    /* ── Android app banner ── */
+    #android-banner {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 9999;
+      background: #0D1117;
+      border-bottom: 1px solid rgba(0,122,255,0.2);
+      padding: 10px 14px;
+      align-items: center;
+      gap: 12px;
+      font-family: 'Sora', sans-serif;
+    }
+    #android-banner.visible { display: flex; }
+    #android-banner-close {
+      background: none;
+      border: none;
+      color: rgba(240,244,255,0.4);
+      font-size: 18px;
+      cursor: pointer;
+      padding: 0 4px;
+      line-height: 1;
+      flex-shrink: 0;
+    }
+    #android-banner-icon {
+      width: 40px; height: 40px;
+      border-radius: 10px;
+      flex-shrink: 0;
+      object-fit: cover;
+    }
+    #android-banner-text {
+      flex: 1;
+      min-width: 0;
+    }
+    #android-banner-text strong {
+      display: block;
+      font-size: 13px;
+      font-weight: 600;
+      color: #F0F4FF;
+      letter-spacing: -0.2px;
+    }
+    #android-banner-text span {
+      font-size: 11px;
+      color: rgba(240,244,255,0.45);
+    }
+    #android-banner-btn {
+      background: #007AFF;
+      color: #fff;
+      border: none;
+      border-radius: 20px;
+      padding: 7px 16px;
+      font-size: 12px;
+      font-weight: 600;
+      font-family: 'Sora', sans-serif;
+      cursor: pointer;
+      text-decoration: none;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
 
     /* ── Page wrapper ── */
     .page {
@@ -392,6 +456,17 @@
 </head>
 <body>
 
+  <!-- Android App Banner — shown only on Android Chrome, hidden on iOS (iOS uses native Smart App Banner) -->
+  <div id="android-banner">
+    <button id="android-banner-close" aria-label="Close">&times;</button>
+    <img id="android-banner-icon" src="supaflash_logo.png" alt="Supaflash" />
+    <div id="android-banner-text">
+      <strong>Supaflash</strong>
+      <span>Free on Google Play</span>
+    </div>
+    <a id="android-banner-btn" href="https://play.google.com/store/apps/details?id=com.supaflash.app">Get</a>
+  </div>
+
   <!--
   <div class="ribbon-wrap">
     <div class="ribbon">Coming Soon</div>
@@ -510,6 +585,35 @@
     <p class="footer-contact">Questions? <a href="mailto:joshua9park@gmail.com">joshua9park@gmail.com</a></p>
     <p class="footer-copy">&copy; 2026 Supaflash. All rights reserved.</p>
   </footer>
+
+  <script>
+    // Show Android banner only on Android devices
+    // iOS users get the native Safari Smart App Banner from the meta tag above
+    (function () {
+      var ua = navigator.userAgent;
+      var isAndroid = /Android/i.test(ua);
+      var isIOS = /iPhone|iPad|iPod/i.test(ua);
+
+      if (isAndroid && !isIOS) {
+        var banner = document.getElementById('android-banner');
+        var closeBtn = document.getElementById('android-banner-close');
+
+        // Only show if user hasn't dismissed it this session
+        if (!sessionStorage.getItem('android-banner-dismissed')) {
+          banner.classList.add('visible');
+
+          // Push page content down to make room for the banner
+          document.body.style.paddingTop = (banner.offsetHeight) + 'px';
+        }
+
+        closeBtn.addEventListener('click', function () {
+          banner.classList.remove('visible');
+          document.body.style.paddingTop = '0';
+          sessionStorage.setItem('android-banner-dismissed', '1');
+        });
+      }
+    })();
+  </script>
 
 </body>
 </html>
