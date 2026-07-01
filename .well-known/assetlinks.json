@@ -1,0 +1,12 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.supaflash.app",
+      "sha256_cert_fingerprints": [
+        "5F:44:C4:4C:36:99:67:DA:30:1F:35:AC:27:AB:13:E7:0E:69:F6:AA:EA:AC:59:73:2F:B4:7D:DD:E8:9C:DD:78"
+      ]
+    }
+  }
+]
