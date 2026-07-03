@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script>
+    var path = window.location.pathname;
+    if (path.startsWith('/deck/')) {
+      window.location.replace(
+        '/deck.html?path=' + encodeURIComponent(path)
+      );
+    } else {
+      window.location.replace('/');
+    }
+  </script>
+</head>
+</html>
