@@ -5,7 +5,8 @@
       "namespace": "android_app",
       "package_name": "com.supaflash.app",
       "sha256_cert_fingerprints": [
-        "5F:44:C4:4C:36:99:67:DA:30:1F:35:AC:27:AB:13:E7:0E:69:F6:AA:EA:AC:59:73:2F:B4:7D:DD:E8:9C:DD:78"
+        "5F:44:C4:4C:36:99:67:DA:30:1F:35:AC:27:AB:13:E7:0E:69:F6:AA:EA:AC:59:73:2F:B4:7D:DD:E8:9C:DD:78",,
+        "1C:7D:18:38:65:C9:B7:DD:D5:28:F5:1C:90:B2:47:9E:37:1F:E9:1D:C5:B7:70:D3:18:B4:96:E5:9F:C5:E1:A0"
       ]
     }
   }
